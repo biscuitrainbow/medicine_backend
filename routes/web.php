@@ -15,4 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/medicine','MedicineController');
+Route::resource('/medicine','MedicineController')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'MedicineController@index')->name('home');
+Route::get('/', 'MedicineController@index')->name('home');
